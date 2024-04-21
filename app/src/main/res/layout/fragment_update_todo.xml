@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="args"
+            type="com.naeemaziz.todoapp.fragments.ui.update.UpdateTdDoFragmentArgs" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".fragments.ui.update.UpdateTdDoFragment">
+
+
+        <EditText
+            android:id="@+id/update_titleET"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:ems="10"
+            android:hint="@string/title"
+            android:text="@{args.currentItem.title}"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/update_prioritiesFL"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/update_titleET">
+
+            <Spinner  android:id="@+id/update_prioritiesSP"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:parsePriorityToInt="@{args.currentItem.priority}"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:entries="@array/priorities"/>
+
+            <ImageView
+                android:layout_gravity="end|bottom"
+                android:contentDescription="@null"
+                android:layout_marginBottom="5sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_drop_down"
+                />
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/update_descriptioET"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_edit_text"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="16dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/description"
+            android:text="@{args.currentItem.description}"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_prioritiesFL" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

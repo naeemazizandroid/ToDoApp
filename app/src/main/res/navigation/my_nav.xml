@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/listTodoFragment">
+
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="com.naeemaziz.todoapp.fragments.ui.add.AddTodoFragment"
+        android:label="@string/add"
+        tools:layout="@layout/fragment_add_todo" >
+        <action
+            android:id="@+id/action_addTodoFragment_to_listTodoFragment"
+            app:destination="@id/listTodoFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/listTodoFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listTodoFragment"
+        android:name="com.naeemaziz.todoapp.fragments.ui.list.ListTodoFragment"
+        android:label="@string/todo_list"
+        tools:layout="@layout/fragment_list_todo" >
+        <action
+            android:id="@+id/action_listTodoFragment_to_updateTdDoFragment"
+            app:destination="@id/updateTdDoFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            />
+        <action
+            android:id="@+id/action_listTodoFragment_to_addTodoFragment"
+            app:destination="@id/addTodoFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/updateTdDoFragment"
+        android:name="com.naeemaziz.todoapp.fragments.ui.update.UpdateTdDoFragment"
+        android:label="@string/update"
+        tools:layout="@layout/fragment_update_todo" >
+        <action
+            android:id="@+id/action_updateTdDoFragment_to_listTodoFragment"
+            app:destination="@id/listTodoFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/listTodoFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="currentItem"
+            app:argType="com.naeemaziz.todoapp.data.model.ToDoData" />
+    </fragment>
+</navigation>
